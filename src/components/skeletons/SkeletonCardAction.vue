@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm pb-4 rounded overflow-hidden shadow-lg">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
     <div
       class="relative skeleton skeleton-image w-full skeleton-loader__bone"
     ></div>
@@ -23,12 +23,17 @@
         ></div>
       </div>
     </div>
+    <div class="mt-2 px-6 py-4">
+      <div
+        class="relative ml-auto skeleton skeleton-button skeleton-loader__bone"
+      ></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SkeletonCard'
+  name: 'SkeletonCardAction'
 };
 </script>
 

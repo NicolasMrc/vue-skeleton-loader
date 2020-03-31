@@ -3,7 +3,7 @@ module.exports = {
     extend: {}
   },
   variants: {
-    opacity: ["disabled"]
+    opacity: ['disabled']
   },
   plugins: []
 };

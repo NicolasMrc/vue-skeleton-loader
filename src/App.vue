@@ -61,23 +61,26 @@
             Résultat
           </span>
         </div>
-        <skeleton-loader :loading="loading" :type="type" class="mt-12">
-          <component :is="fakeComponent"></component>
-        </skeleton-loader>
+        <div class="mt-6">
+          <skeleton-loader :loading="loading" :type="type">
+            <component :is="fakeComponent"></component>
+          </skeleton-loader>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SkeletonLoader from "./components/skeletons/SkeletonLoader.vue";
-import FakeCard from "./components/fakers/fakeCard";
-import FakeButton from "./components/fakers/fakeButton";
-import FakeTitle from "./components/fakers/fakeTitle";
-import FakeText from "./components/fakers/fakeText";
+import SkeletonLoader from './components/skeletons/SkeletonLoader.vue';
+import FakeCard from './components/fakers/fakeCard';
+import FakeButton from './components/fakers/fakeButton';
+import FakeTitle from './components/fakers/fakeTitle';
+import FakeText from './components/fakers/fakeText';
+import fakeCardAction from './components/fakers/fakeCardAction';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     FakeText,
     FakeTitle,
@@ -88,13 +91,15 @@ export default {
   computed: {
     fakeComponent() {
       switch (this.type) {
-        case "card":
+        case 'card':
           return FakeCard;
-        case "title":
+        case 'card-action':
+          return fakeCardAction;
+        case 'title':
           return FakeTitle;
-        case "button":
+        case 'button':
           return FakeButton;
-        case "text":
+        case 'text':
           return FakeText;
         default:
           return FakeCard;
@@ -104,12 +109,13 @@ export default {
   data: () => ({
     loading: true,
     types: [
-      { label: "Card", value: "card" },
-      { label: "Title", value: "title" },
-      { label: "Text", value: "text" },
-      { label: "Button", value: "button" }
+      { label: 'Card', value: 'card' },
+      { label: 'Card Action', value: 'card-action' },
+      { label: 'Title', value: 'title' },
+      { label: 'Text', value: 'text' },
+      { label: 'Button', value: 'button' }
     ],
-    type: "card"
+    type: 'card'
   }),
   created() {
     this.fakeLoading();
@@ -135,5 +141,57 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@-webkit-keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.skeleton-loader__bone::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  -webkit-animation: loading 1.5s infinite;
+  animation: loading 1.5s infinite;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.skeleton {
+  background-color: #eee;
+
+  &.skeleton-image {
+    height: 200px;
+  }
+  &.skeleton-title {
+    width: 200px;
+    border-radius: 20px;
+    height: 20px;
+  }
+  &.skeleton-text {
+    border-radius: 20px;
+    height: 13px;
+  }
+  &.skeleton-button {
+    border-radius: 3px;
+    height: 30px;
+    width: 80px;
+  }
 }
 </style>

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "fakeText"
+  name: 'fakeText'
 };
 </script>
 

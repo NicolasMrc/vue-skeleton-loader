@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm pb-4 rounded overflow-hidden shadow-lg">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
     <img
       class="w-full"
       src="https://tailwindcss.com/img/card-top.jpg"
@@ -13,12 +13,17 @@
         nihil.
       </p>
     </div>
+    <div class="px-6 py-4 text-right">
+      <button type="button" class="px-3 py-1 rounded bg-blue-500 text-white">
+        Voir
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'fakeCard'
+  name: 'fakeCardAction'
 };
 </script>
 
