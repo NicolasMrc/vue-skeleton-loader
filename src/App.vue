@@ -62,10 +62,7 @@
           </span>
         </div>
         <skeleton-loader :loading="loading" :type="type" class="mt-12">
-          <fake-card v-if="type === 'card'"></fake-card>
-          <fake-button v-else-if="type === 'button'"></fake-button>
-          <fake-title v-else-if="type === 'title'"></fake-title>
-          <fake-text v-else-if="type === 'text'"></fake-text>
+          <component :is="fakeComponent"></component>
         </skeleton-loader>
       </div>
     </div>
@@ -87,6 +84,22 @@ export default {
     FakeButton,
     FakeCard,
     SkeletonLoader
+  },
+  computed: {
+    fakeComponent() {
+      switch (this.type) {
+        case "card":
+          return FakeCard;
+        case "title":
+          return FakeTitle;
+        case "button":
+          return FakeButton;
+        case "text":
+          return FakeText;
+        default:
+          return FakeCard;
+      }
+    }
   },
   data: () => ({
     loading: true,

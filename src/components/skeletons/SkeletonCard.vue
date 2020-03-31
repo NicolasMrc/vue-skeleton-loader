@@ -4,7 +4,9 @@
       class="relative skeleton skeleton-image w-full skeleton-loader__bone"
     ></div>
     <div class="px-6 py-4">
-      <div class="mt-3 skeleton skeleton-title font-bold text-xl mb-2"></div>
+      <div
+        class="relative mt-3 skeleton skeleton-title font-bold text-xl mb-2 skeleton-loader__bone"
+      ></div>
       <div class="flex">
         <div
           class="relative mt-6 w-5/6 skeleton skeleton-text skeleton-loader__bone"
