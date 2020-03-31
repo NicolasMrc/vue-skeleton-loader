@@ -20,10 +20,12 @@
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
               >
-                <option value="card">Card</option>
-                <option value="title">Title</option>
-                <option value="button">Button</option>
-                <option value="text">Text</option>
+                <option
+                  v-for="type in types"
+                  :key="`select_type_${type.value}`"
+                  :value="type.value"
+                  >{{ type.label }}</option
+                >
               </select>
               <div
                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -88,7 +90,12 @@ export default {
   },
   data: () => ({
     loading: true,
-    types: ["card", "title", "text", "button"],
+    types: [
+      { label: "Card", value: "card" },
+      { label: "Title", value: "title" },
+      { label: "Text", value: "text" },
+      { label: "Button", value: "button" }
+    ],
     type: "card"
   }),
   created() {
